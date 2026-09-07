@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using DVLD_DataAccess;
 
 namespace DVLD_Buisness

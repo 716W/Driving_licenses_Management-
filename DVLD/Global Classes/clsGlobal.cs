@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,87 +14,74 @@ namespace DVLD.Classes
     {
         public static clsUser CurrentUser;
 
+        /// <summary>
+        /// Persists only the username for Remember-Me convenience.
+        /// The password is NEVER written to disk — the user must always type it.
+        /// Pass an empty Username to clear the stored credential.
+        /// </summary>
         public static bool RememberUsernameAndPassword(string Username, string Password)
         {
-
+            // NOTE: the Password parameter is intentionally ignored for security.
+            // Plaintext passwords must never be written to disk.
             try
             {
-                //this will get the current project directory folder.
                 string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-
-                // Define the path to the text file where you want to save the data
                 string filePath = currentDirectory + "\\data.txt";
 
-                //incase the username is empty, delete the file
-                if (Username=="" && File.Exists(filePath)) 
-                { 
-                     File.Delete(filePath);
+                // Clear: if username is empty, delete the file
+                if (Username == "" && File.Exists(filePath))
+                {
+                    File.Delete(filePath);
                     return true;
-
                 }
 
-                // concatonate username and passwrod withe seperator.
-                string dataToSave = Username + "#//#"+Password ;
-
-                // Create a StreamWriter to write to the file
+                // Store only the username — no password
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    // Write the data to the file
-                    writer.WriteLine(dataToSave);
-                   
-                  return true;
+                    writer.WriteLine(Username);
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-               MessageBox.Show ($"An error occurred: {ex.Message}");
+               MessageBox.Show($"An error occurred: {ex.Message}");
                 return false;
             }
-
         }
 
+        /// <summary>
+        /// Returns the stored username (if any) for Remember-Me pre-fill.
+        /// Password is always returned as empty string — the user must type it.
+        /// </summary>
         public static bool GetStoredCredential(ref string Username, ref string Password)
         {
-            //this will get the stored username and password and will return true if found and false if not found.
+            // Password is never stored on disk — always return empty.
+            Password = "";
             try
             {
-                //gets the current project's directory
                 string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-                // Path for the file that contains the credential.
                 string filePath  = currentDirectory + "\\data.txt";
 
-                // Check if the file exists before attempting to read it
                 if (File.Exists(filePath))
                 {
-                    // Create a StreamReader to read from the file
                     using (StreamReader reader = new StreamReader(filePath))
                     {
-                        // Read data line by line until the end of the file
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
+                        string? line = reader.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(line))
                         {
-                            Console.WriteLine(line); // Output each line of data to the console
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
-
-                            Username = result[0];
-                            Password = result[1];
+                            Username = line.Trim();
+                            return true;
                         }
-                        return true;
                     }
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show ($"An error occurred: {ex.Message}");
-                return false;   
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
             }
-
         }
     }
 }

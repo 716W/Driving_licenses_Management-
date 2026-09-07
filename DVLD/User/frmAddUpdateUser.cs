@@ -1,4 +1,4 @@
-﻿using DVLD.Properties;
+using DVLD.Properties;
 using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,6 @@ using DVLD_Buisness;
 using DVLD.Classes;
 using DVLD.People;
 using DVLD.Controls;
-using System.Runtime.Remoting.Messaging;
 
 namespace DVLD.User
 {

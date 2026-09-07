@@ -1,4 +1,4 @@
-﻿using DVLD.Classes;
+using DVLD.Classes;
 using DVLD.Properties;
 using DVLD_Buisness;
 using System;
@@ -32,6 +32,7 @@ namespace DVLD.Tests
         private clsTestAppointment _TestAppointment;
         private int _TestAppointmentID = -1;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public clsTestType.enTestType TestTypeID
         {
             get

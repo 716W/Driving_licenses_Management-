@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# DVLD security — never commit real credentials or remembered usernames
+dvld.env
+data.txt
+
 # User-specific files
 *.rsuser
 *.suo

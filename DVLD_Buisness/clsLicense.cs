@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Xml.Linq;
 using DVLD_DataAccess;
 using static System.Net.Mime.MediaTypeNames;

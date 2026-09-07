@@ -1,4 +1,4 @@
-﻿using DVLD.Controls;
+using DVLD.Controls;
 using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
@@ -34,6 +34,7 @@ namespace DVLD.Licenses.Controls
 
         private bool _FilterEnabled = true;
       
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool FilterEnabled
         {
             get

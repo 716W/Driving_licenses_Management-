@@ -1,4 +1,4 @@
-﻿using DVLD.Classes;
+using DVLD.Classes;
 using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
@@ -75,7 +75,7 @@ namespace DVLD.Login
             if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
             {
                 txtUserName.Text = UserName;
-                txtPassword.Text = Password;
+                // Password is never persisted — the user must always type it
                 chkRememberMe.Checked = true;
             }
             else
