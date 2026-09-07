@@ -1,7 +1,7 @@
-﻿ using System;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace DVLD_DataAccess
 {
@@ -491,6 +491,7 @@ namespace DVLD_DataAccess
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@Password", NewPassword);
 
             try
             {

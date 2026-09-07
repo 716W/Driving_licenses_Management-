@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -281,12 +281,12 @@ namespace DVLD_DataAccess
                               SET LicenseID = @LicenseID, 
                               DetainDate = @DetainDate, 
                               FineFees = @FineFees,
-                              CreatedByUserID = @CreatedByUserID,   
+                              CreatedByUserID = @CreatedByUserID
                               WHERE DetainID=@DetainID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@DetainedLicenseID", DetainID);
+            command.Parameters.AddWithValue("@DetainID", DetainID);
             command.Parameters.AddWithValue("@LicenseID", LicenseID);
             command.Parameters.AddWithValue("@DetainDate", DetainDate);
             command.Parameters.AddWithValue("@FineFees", FineFees);

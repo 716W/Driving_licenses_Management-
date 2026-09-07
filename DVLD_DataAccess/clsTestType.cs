@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -112,9 +112,8 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Insert Into TestTypes (TestTypeTitle,TestTypeTitle,TestTypeFees)
-                            Values (@TestTypeTitle,@TestTypeDescription,@ApplicationFees)
-                            where TestTypeID = @TestTypeID;
+            string query = @"INSERT INTO TestTypes (TestTypeTitle, TestTypeDescription, TestTypeFees)
+                            VALUES (@TestTypeTitle, @TestTypeDescription, @ApplicationFees);
                             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);

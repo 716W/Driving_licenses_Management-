@@ -1,4 +1,4 @@
-﻿using DVLD.People;
+using DVLD.People;
 using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
@@ -29,6 +29,7 @@ namespace DVLD.Controls
 
 
        private bool _ShowAddPerson=true;
+       [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
        public bool ShowAddPerson
         {
             get
@@ -43,6 +44,7 @@ namespace DVLD.Controls
         }
 
         private bool _FilterEnabled = true;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool FilterEnabled
         {
             get
